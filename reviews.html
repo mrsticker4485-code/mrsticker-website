@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Reviews — Mr Sticker Auto Repair</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --yellow: #F8C500;
+    --red: #C41E2A;
+    --asphalt: #1B1B1A;
+    --concrete: #E9E5DC;
+    --steel: #4A4E54;
+    --white: #FAFAF8;
+    --ticket-line: rgba(27,27,26,0.25);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--concrete);
+    color:var(--asphalt);
+    font-family:'Work Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3, .display{
+    font-family:'Oswald', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+    margin:0;
+  }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  a{ color:inherit; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 28px; }
+
+  /* NAV */
+  .nav{ position:sticky; top:0; z-index:50; background:var(--asphalt); border-bottom:4px solid var(--yellow); }
+  .nav .wrap{ display:flex; align-items:center; justify-content:space-between; padding-top:14px; padding-bottom:14px; }
+  .nav .brand{ color:var(--white); font-size:20px; font-weight:700; letter-spacing:0.03em; line-height:1; text-decoration:none; }
+  .nav .brand span{ color:var(--yellow); }
+  .nav .callbar{ display:flex; align-items:center; gap:18px; }
+  .nav .phone{ color:var(--yellow); font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:15px; white-space:nowrap; }
+  .nav .cta{ background:var(--red); color:var(--white); font-family:'Oswald', sans-serif; text-transform:uppercase; font-size:13px; letter-spacing:0.06em; padding:9px 16px; border-radius:2px; text-decoration:none; white-space:nowrap; }
+  .nav .cta-ghost{ background:transparent; border:1.5px solid var(--yellow); color:var(--yellow); }
+  .nav .fb-link{ color:#B9B6AC; font-family:'IBM Plex Mono', monospace; font-size:13px; text-decoration:none; border-bottom:1px dashed rgba(185,182,172,0.5); white-space:nowrap; }
+  .nav .fb-link:hover{ color:var(--yellow); border-color:var(--yellow); }
+
+  /* PAGE HEADER */
+  .page-head{ background:var(--asphalt); color:var(--white); padding:64px 0 48px 0; border-bottom:4px solid var(--yellow); }
+  .page-head .eyebrow{ display:inline-block; background:var(--yellow); color:var(--asphalt); font-family:'IBM Plex Mono', monospace; font-size:12px; font-weight:600; letter-spacing:0.14em; padding:5px 10px; margin-bottom:16px; }
+  .page-head h1{ font-size:clamp(32px, 5vw, 56px); }
+  .page-head p{ color:#C9C6BC; max-width:560px; margin-top:14px; font-size:15.5px; line-height:1.6; }
+
+  .section{ padding:70px 0; }
+  .section-label{ display:flex; align-items:center; gap:14px; margin-bottom:40px; }
+  .section-label .num{ font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--steel); border:1px dashed var(--ticket-line); padding:5px 10px; }
+  .section-label h2{ font-size:clamp(24px, 3.2vw, 32px); }
+  .section-label .rule{ flex:1; height:1px; background:repeating-linear-gradient(90deg, var(--ticket-line) 0 8px, transparent 8px 16px); }
+
+  /* REVIEW TICKETS */
+  .review-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:24px; }
+  .review-ticket{
+    background:var(--white);
+    border:1px solid rgba(0,0,0,0.1);
+    border-left:5px solid var(--yellow);
+    padding:26px 28px;
+    position:relative;
+  }
+  .review-ticket .stub{
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px; letter-spacing:0.08em; color:var(--steel);
+    margin-bottom:16px;
+    padding-bottom:12px;
+    border-bottom:1px dashed var(--ticket-line);
+  }
+  .review-ticket .stars{ color:var(--red); letter-spacing:2px; }
+  .review-ticket p{ font-size:15px; line-height:1.6; color:var(--asphalt); margin:0; }
+  .review-ticket .who{ margin-top:16px; font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--steel); }
+
+  .disclaimer{
+    margin-top:36px;
+    padding:18px 22px;
+    background:var(--white);
+    border:1px dashed var(--ticket-line);
+    font-size:13.5px;
+    color:var(--steel);
+    line-height:1.6;
+  }
+
+  .cta-row{
+    display:flex; gap:16px; flex-wrap:wrap; margin-top:36px;
+  }
+  .btn{ display:inline-block; font-family:'Oswald', sans-serif; text-transform:uppercase; letter-spacing:0.05em; font-size:14.5px; padding:14px 26px; border-radius:2px; text-decoration:none; border:2px solid transparent; }
+  .btn-primary{ background:var(--red); color:var(--white); }
+  .btn-dark{ background:var(--asphalt); color:var(--white); }
+
+  footer{ background:#121211; color:#8B8880; padding:26px 0; font-size:13px; }
+  footer .wrap{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; }
+
+  @media (max-width: 860px){
+    .review-grid{ grid-template-columns:1fr; }
+    .nav .phone{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="wrap">
+      <a class="brand" href="index.html">MR STICKER <span>AUTO REPAIR</span></a>
+      <div class="callbar">
+        <a class="fb-link" href="https://www.facebook.com/mastersticker4485" target="_blank" rel="noopener">Facebook</a>
+        <span class="phone">(713) 465-2552</span>
+        <a class="cta cta-ghost" href="sms:+17134652552">Text Us</a>
+        <a class="cta" href="tel:+17134652552">Call Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-head">
+    <div class="wrap">
+      <span class="eyebrow mono">CUSTOMER FEEDBACK</span>
+      <h1>What Customers Say</h1>
+      <p>A look at what regulars tell us — in the lobby, over the phone, and online.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-label">
+        <span class="num mono">01</span>
+        <h2>Recent Feedback</h2>
+        <span class="rule"></span>
+      </div>
+
+      <div class="review-grid">
+        <div class="review-ticket">
+          <div class="stub"><span>WORK ORDER · INSPECTION</span><span class="stars">★★★★★</span></div>
+          <p>Came in early for an inspection and oil change and was back on the road in about 30 minutes. Straightforward, friendly, and no runaround.</p>
+          <div class="who">— Local customer</div>
+        </div>
+
+        <div class="review-ticket">
+          <div class="stub"><span>WORK ORDER · GENERAL REPAIR</span><span class="stars">★★★★★</span></div>
+          <p>A longtime customer who's brought several vehicles here over the years, praising the team for tracking down hard-to-find parts at fair prices.</p>
+          <div class="who">— Returning customer</div>
+        </div>
+
+        <div class="review-ticket">
+          <div class="stub"><span>WORK ORDER · INSPECTION</span><span class="stars">★★★★★</span></div>
+          <p>Called it one of the best inspection experiences around — quick and handled professionally from start to finish.</p>
+          <div class="who">— Local customer</div>
+        </div>
+
+        <div class="review-ticket">
+          <div class="stub"><span>WORK ORDER · OIL CHANGE</span><span class="stars">★★★★☆</span></div>
+          <p>Appreciates having a comfortable place to wait and a team that explains what's being done before any work starts.</p>
+          <div class="who">— Local customer</div>
+        </div>
+      </div>
+
+      <div class="disclaimer mono">
+        NOTE: These reflect common themes from customer feedback left with the shop and on public listings. Full, unedited reviews are visible on our Google Business and Facebook pages.
+      </div>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://www.facebook.com/mastersticker4485" target="_blank" rel="noopener">See Reviews on Facebook</a>
+        <a class="btn btn-dark" href="tel:+17134652552">Call the Shop</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Mr Sticker Auto Repair · 1531 Gessner Rd, Houston, TX 77080</span>
+      <span>
+        <a href="index.html" style="margin-right:16px; text-decoration:underline;">Home</a>
+        <a href="https://www.facebook.com/mastersticker4485" target="_blank" rel="noopener" style="margin-right:16px; text-decoration:underline;">Facebook</a>
+        <span class="mono">(713) 465-2552</span>
+      </span>
+    </div>
+  </footer>
+
+</body>
+</html>
