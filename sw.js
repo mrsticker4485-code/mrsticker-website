@@ -1,4 +1,4 @@
-const CACHE_NAME = "mrsticker-v1";
+const CACHE_NAME = "mrsticker-v2";
 const ASSETS = ["./", "./index.html", "./reviews.html", "./manifest.json", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", (event) => {
@@ -17,8 +17,16 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
+// Network-first: always try to get the latest version online.
+// Only fall back to the saved copy if there's no internet connection.
 self.addEventListener("fetch", (event) => {
   event.respondWith(
-    caches.match(event.request).then((cached) => cached || fetch(event.request))
+    fetch(event.request)
+      .then((response) => {
+        var copy = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+        return response;
+      })
+      .catch(() => caches.match(event.request))
   );
 });
