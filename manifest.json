@@ -1,0 +1,24 @@
+{
+  "name": "Mr Sticker Auto Repair",
+  "short_name": "Mr Sticker",
+  "description": "Auto repair, oil change, and Texas state inspection on Gessner Rd, Houston.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#1B1B1A",
+  "theme_color": "#F8C500",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
