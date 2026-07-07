@@ -54,6 +54,18 @@
   .nav .cta-ghost{ background:transparent; border:1.5px solid var(--yellow); color:var(--yellow); }
   .nav .fb-link{ color:#B9B6AC; font-family:'IBM Plex Mono', monospace; font-size:13px; text-decoration:none; border-bottom:1px dashed rgba(185,182,172,0.5); white-space:nowrap; }
   .nav .fb-link:hover{ color:var(--yellow); border-color:var(--yellow); }
+  .lang-btn{
+    background:transparent;
+    border:1.5px solid #B9B6AC;
+    color:#EDEAE1;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.05em;
+    padding:7px 12px;
+    border-radius:2px;
+    cursor:pointer;
+  }
+  .lang-btn:hover{ border-color:var(--yellow); color:var(--yellow); }
 
   /* PAGE HEADER */
   .page-head{ background:var(--asphalt); color:var(--white); padding:64px 0 48px 0; border-bottom:4px solid var(--yellow); }
@@ -120,19 +132,20 @@
     <div class="wrap">
       <a class="brand" href="index.html">MR STICKER <span>AUTO REPAIR</span></a>
       <div class="callbar">
-        <a class="fb-link" href="https://www.facebook.com/mastersticker4485" target="_blank" rel="noopener">Facebook</a>
+        <a class="fb-link" href="https://www.facebook.com/mastersticker4485" target="_blank" rel="noopener" data-i18n="nav.facebook">Facebook</a>
         <span class="phone">(713) 465-2552</span>
-        <a class="cta cta-ghost" href="sms:+17134652552">Text Us</a>
-        <a class="cta" href="tel:+17134652552">Call Now</a>
+        <a class="cta cta-ghost" href="sms:+17134652552" data-i18n="cta.textUs">Text Us</a>
+        <a class="cta" href="tel:+17134652552" data-i18n="cta.callNow">Call Now</a>
+        <button id="lang-toggle" class="lang-btn" type="button">ES</button>
       </div>
     </div>
   </nav>
 
   <header class="page-head">
     <div class="wrap">
-      <span class="eyebrow mono">CUSTOMER FEEDBACK</span>
-      <h1>What Customers Say</h1>
-      <p>A look at what regulars tell us — in the lobby, over the phone, and online.</p>
+      <span class="eyebrow mono" data-i18n="rev.eyebrow">CUSTOMER FEEDBACK</span>
+      <h1 data-i18n="rev.h1">What Customers Say</h1>
+      <p data-i18n="rev.subhead">A look at what regulars tell us — in the lobby, over the phone, and online.</p>
     </div>
   </header>
 
@@ -140,43 +153,43 @@
     <div class="wrap">
       <div class="section-label">
         <span class="num mono">01</span>
-        <h2>Recent Feedback</h2>
+        <h2 data-i18n="rev.sectionH2">Recent Feedback</h2>
         <span class="rule"></span>
       </div>
 
       <div class="review-grid">
         <div class="review-ticket">
-          <div class="stub"><span>WORK ORDER · INSPECTION</span><span class="stars">★★★★★</span></div>
-          <p>Came in early for an inspection and oil change and was back on the road in about 30 minutes. Straightforward, friendly, and no runaround.</p>
-          <div class="who">— Local customer</div>
+          <div class="stub"><span data-i18n="rev.stub1">WORK ORDER · EMISSIONS TEST</span><span class="stars">★★★★★</span></div>
+          <p data-i18n="rev.p1">Came in early for an emissions test and oil change and was back on the road in about 30 minutes. Straightforward, friendly, and no runaround.</p>
+          <div class="who" data-i18n="rev.who1">— Local customer</div>
         </div>
 
         <div class="review-ticket">
-          <div class="stub"><span>WORK ORDER · GENERAL REPAIR</span><span class="stars">★★★★★</span></div>
-          <p>A longtime customer who's brought several vehicles here over the years, praising the team for tracking down hard-to-find parts at fair prices.</p>
-          <div class="who">— Returning customer</div>
+          <div class="stub"><span data-i18n="rev.stub2">WORK ORDER · GENERAL REPAIR</span><span class="stars">★★★★★</span></div>
+          <p data-i18n="rev.p2">A longtime customer who's brought several vehicles here over the years, praising the team for tracking down hard-to-find parts at fair prices.</p>
+          <div class="who" data-i18n="rev.who2">— Returning customer</div>
         </div>
 
         <div class="review-ticket">
-          <div class="stub"><span>WORK ORDER · INSPECTION</span><span class="stars">★★★★★</span></div>
-          <p>Called it one of the best inspection experiences around — quick and handled professionally from start to finish.</p>
-          <div class="who">— Local customer</div>
+          <div class="stub"><span data-i18n="rev.stub3">WORK ORDER · EMISSIONS TEST</span><span class="stars">★★★★★</span></div>
+          <p data-i18n="rev.p3">Called it one of the best emissions test experiences around — quick and handled professionally from start to finish.</p>
+          <div class="who" data-i18n="rev.who3">— Local customer</div>
         </div>
 
         <div class="review-ticket">
-          <div class="stub"><span>WORK ORDER · OIL CHANGE</span><span class="stars">★★★★☆</span></div>
-          <p>Appreciates having a comfortable place to wait and a team that explains what's being done before any work starts.</p>
-          <div class="who">— Local customer</div>
+          <div class="stub"><span data-i18n="rev.stub4">WORK ORDER · OIL CHANGE</span><span class="stars">★★★★☆</span></div>
+          <p data-i18n="rev.p4">Appreciates having a comfortable place to wait and a team that explains what's being done before any work starts.</p>
+          <div class="who" data-i18n="rev.who4">— Local customer</div>
         </div>
       </div>
 
       <div class="disclaimer mono">
-        NOTE: These reflect common themes from customer feedback left with the shop and on public listings. Full, unedited reviews are visible on our Google Business and Facebook pages.
+        <span data-i18n="rev.disclaimer">NOTE: These reflect common themes from customer feedback left with the shop and on public listings. Full, unedited reviews are visible on our Google Business and Facebook pages.</span>
       </div>
 
       <div class="cta-row">
-        <a class="btn btn-primary" href="https://www.facebook.com/mastersticker4485" target="_blank" rel="noopener">See Reviews on Facebook</a>
-        <a class="btn btn-dark" href="tel:+17134652552">Call the Shop</a>
+        <a class="btn btn-primary" href="https://www.facebook.com/mastersticker4485" target="_blank" rel="noopener" data-i18n="rev.ctaFb">See Reviews on Facebook</a>
+        <a class="btn btn-dark" href="tel:+17134652552" data-i18n="rev.ctaCall">Call the Shop</a>
       </div>
     </div>
   </section>
@@ -185,12 +198,73 @@
     <div class="wrap">
       <span>© 2026 Mr Sticker Auto Repair · 1531 Gessner Rd, Houston, TX 77080</span>
       <span>
-        <a href="index.html" style="margin-right:16px; text-decoration:underline;">Home</a>
+        <a href="index.html" style="margin-right:16px; text-decoration:underline;" data-i18n="footer.home">Home</a>
         <a href="https://www.facebook.com/mastersticker4485" target="_blank" rel="noopener" style="margin-right:16px; text-decoration:underline;">Facebook</a>
         <span class="mono">(713) 465-2552</span>
       </span>
     </div>
   </footer>
+
+<script>
+const translations = {
+  "cta.textUs": {en:`Text Us`, es:`Enviar Mensaje`},
+  "cta.callNow": {en:`Call Now`, es:`Llamar Ahora`},
+
+  "rev.eyebrow": {en:`CUSTOMER FEEDBACK`, es:`OPINIONES DE CLIENTES`},
+  "rev.h1": {en:`What Customers Say`, es:`Lo Que Dicen Nuestros Clientes`},
+  "rev.subhead": {en:`A look at what regulars tell us — in the lobby, over the phone, and online.`, es:`Un vistazo a lo que nos comparten nuestros clientes de siempre — en la sala de espera, por teléfono, y en línea.`},
+  "rev.sectionH2": {en:`Recent Feedback`, es:`Opiniones Recientes`},
+
+  "rev.stub1": {en:`WORK ORDER · EMISSIONS TEST`, es:`ORDEN DE TRABAJO · PRUEBA DE EMISIONES`},
+  "rev.p1": {en:`Came in early for an emissions test and oil change and was back on the road in about 30 minutes. Straightforward, friendly, and no runaround.`, es:`Llegó temprano para una prueba de emisiones y cambio de aceite, y en unos 30 minutos ya estaba de regreso en la carretera. Directo, amable, y sin vueltas.`},
+  "rev.who1": {en:`— Local customer`, es:`— Cliente local`},
+
+  "rev.stub2": {en:`WORK ORDER · GENERAL REPAIR`, es:`ORDEN DE TRABAJO · REPARACIÓN GENERAL`},
+  "rev.p2": {en:`A longtime customer who's brought several vehicles here over the years, praising the team for tracking down hard-to-find parts at fair prices.`, es:`Un cliente de muchos años que ha traído varios vehículos aquí, elogiando al equipo por conseguir refacciones difíciles de encontrar a precios justos.`},
+  "rev.who2": {en:`— Returning customer`, es:`— Cliente frecuente`},
+
+  "rev.stub3": {en:`WORK ORDER · EMISSIONS TEST`, es:`ORDEN DE TRABAJO · PRUEBA DE EMISIONES`},
+  "rev.p3": {en:`Called it one of the best emissions test experiences around — quick and handled professionally from start to finish.`, es:`Lo describió como una de las mejores experiencias de prueba de emisiones — rápido y manejado profesionalmente de principio a fin.`},
+  "rev.who3": {en:`— Local customer`, es:`— Cliente local`},
+
+  "rev.stub4": {en:`WORK ORDER · OIL CHANGE`, es:`ORDEN DE TRABAJO · CAMBIO DE ACEITE`},
+  "rev.p4": {en:`Appreciates having a comfortable place to wait and a team that explains what's being done before any work starts.`, es:`Agradece tener un lugar cómodo para esperar y un equipo que explica lo que se va a hacer antes de empezar cualquier trabajo.`},
+  "rev.who4": {en:`— Local customer`, es:`— Cliente local`},
+
+  "rev.disclaimer": {en:`NOTE: These reflect common themes from customer feedback left with the shop and on public listings. Full, unedited reviews are visible on our Google Business and Facebook pages.`, es:`NOTA: Estas opiniones reflejan temas comunes de los comentarios que nos dejan los clientes y en sitios públicos. Las reseñas completas y sin editar están disponibles en nuestras páginas de Google Business y Facebook.`},
+
+  "rev.ctaFb": {en:`See Reviews on Facebook`, es:`Ver Reseñas en Facebook`},
+  "rev.ctaCall": {en:`Call the Shop`, es:`Llamar al Taller`},
+
+  "footer.home": {en:`Home`, es:`Inicio`}
+};
+
+function applyLang(lang){
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var key = el.getAttribute('data-i18n');
+    if(translations[key] && translations[key][lang] !== undefined){
+      el.textContent = translations[key][lang];
+    }
+  });
+  var btn = document.getElementById('lang-toggle');
+  if(btn){ btn.textContent = lang === 'en' ? 'ES' : 'EN'; }
+  try{ localStorage.setItem('mrstickerLang', lang); }catch(e){}
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  var saved = 'en';
+  try{ saved = localStorage.getItem('mrstickerLang') || 'en'; }catch(e){}
+  applyLang(saved);
+  var btn = document.getElementById('lang-toggle');
+  if(btn){
+    btn.addEventListener('click', function(){
+      var current = document.documentElement.lang === 'es' ? 'es' : 'en';
+      applyLang(current === 'en' ? 'es' : 'en');
+    });
+  }
+});
+</script>
 
 <script>
   if ('serviceWorker' in navigator) {
