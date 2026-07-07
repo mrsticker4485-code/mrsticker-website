@@ -170,6 +170,53 @@
   .btn-primary{ background:var(--red); color:var(--white); }
   .btn-ghost{ background:transparent; color:var(--white); border-color:rgba(255,255,255,0.55); }
 
+  /* ---------- INSPECTION FEATURE ---------- */
+  .inspection-feature{
+    background:var(--red);
+    color:var(--white);
+    padding:56px 0;
+  }
+  .if-head{
+    max-width:680px;
+    margin-bottom:36px;
+  }
+  .if-head h2{
+    color:var(--white);
+    font-size:clamp(24px, 3.4vw, 34px);
+    margin:10px 0 14px 0;
+  }
+  .if-head p{
+    font-size:15px;
+    line-height:1.6;
+    color:#FDE9E9;
+    margin:0;
+  }
+  .if-stats{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:22px;
+    border-top:1px dashed rgba(255,255,255,0.35);
+    padding-top:30px;
+  }
+  .if-stat{ text-align:left; }
+  .if-num{
+    display:block;
+    font-size:44px;
+    font-weight:600;
+    color:var(--yellow);
+    line-height:1;
+    margin-bottom:8px;
+  }
+  .if-label{
+    font-size:13px;
+    color:#FDE9E9;
+    line-height:1.4;
+    display:block;
+  }
+  @media (max-width: 860px){
+    .if-stats{ grid-template-columns:repeat(2, 1fr); }
+  }
+
   /* ---------- TICKET STRIP (signature motif) ---------- */
   .ticket-strip{
     background:var(--asphalt);
@@ -228,6 +275,54 @@
     flex:1;
     height:1px;
     background:repeating-linear-gradient(90deg, var(--ticket-line) 0 8px, transparent 8px 16px);
+  }
+
+  /* ---------- AFTER EMISSIONS TEST ---------- */
+  .after-test{ background:var(--concrete); }
+  .after-test-intro{
+    max-width:640px;
+    font-size:15px;
+    color:var(--steel);
+    line-height:1.6;
+    margin:-20px 0 32px 0;
+  }
+  .after-test-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:20px;
+  }
+  .at-card{
+    background:var(--white);
+    border:1px solid rgba(0,0,0,0.08);
+    border-top:4px solid var(--yellow);
+    padding:24px 26px;
+  }
+  .at-tag{
+    font-size:11px;
+    letter-spacing:0.1em;
+    color:var(--red);
+    display:block;
+    margin-bottom:10px;
+  }
+  .at-card h3{
+    font-size:18px;
+    margin-bottom:10px;
+  }
+  .at-card p{
+    font-size:14px;
+    color:var(--steel);
+    line-height:1.6;
+    margin:0;
+  }
+  .after-test-note{
+    margin-top:24px;
+    font-size:12.5px;
+    color:var(--steel);
+    border-top:1px dashed var(--ticket-line);
+    padding-top:16px;
+  }
+  @media (max-width: 860px){
+    .after-test-grid{ grid-template-columns:1fr; }
   }
 
   /* ---------- SERVICES ---------- */
@@ -501,17 +596,46 @@
 
   <header class="hero">
     <div class="wrap hero-inner">
-      <span class="hero-eyebrow mono">OFFICIAL TEXAS VEHICLE INSPECTION STATION</span>
-      <h1>In by seven-thirty.<br>Out before <em>lunch.</em></h1>
-      <p class="sub">Auto repair, oil changes, and state inspections on Gessner Rd — run by the same crew that's been fixing this neighborhood's cars for years.</p>
+      <span class="hero-eyebrow mono">OFFICIAL TEXAS EMISSIONS TEST STATION</span>
+      <h1>Drive in. Get your <em>sticker.</em><br>Drive out — in minutes.</h1>
+      <p class="sub">Two OBD emissions test machines, two certified testers, working side by side — most vehicles are in and out in under 10 minutes. Plus full auto repair, oil changes, and battery service on Gessner Rd.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="tel:+17134652552">(713) 465-2552</a>
         <a class="btn btn-ghost" href="sms:+17134652552">Text Us</a>
+        <a class="btn btn-ghost" href="#after-test">After Your Test</a>
         <a class="btn btn-ghost" href="#promotions">See Promotions</a>
         <a class="btn btn-ghost" href="reviews.html">Read Reviews</a>
       </div>
     </div>
   </header>
+
+  <section class="inspection-feature">
+    <div class="wrap">
+      <div class="if-head">
+        <span class="hero-eyebrow mono" style="margin-bottom:8px;">WHY MR STICKER</span>
+        <h2>Built Around the Emissions Test — Not an Afterthought</h2>
+        <p>Texas eliminated the old safety inspection, but Harris County still requires an annual emissions test to renew registration. Most shops treat it as one more line item — here, it's the reason the shop exists, with the whole bay set up to get you tested and back on the road fast.</p>
+      </div>
+      <div class="if-stats">
+        <div class="if-stat">
+          <span class="if-num mono">2</span>
+          <span class="if-label">OBD Emissions Test Machines</span>
+        </div>
+        <div class="if-stat">
+          <span class="if-num mono">2</span>
+          <span class="if-label">Inspectors Working Side by Side</span>
+        </div>
+        <div class="if-stat">
+          <span class="if-num mono">&lt;10</span>
+          <span class="if-label">Minutes, Drive-Through</span>
+        </div>
+        <div class="if-stat">
+          <span class="if-num mono">2</span>
+          <span class="if-label">Vehicles Tested at Once</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <div class="ticket-strip">
     <div class="wrap">
@@ -525,7 +649,7 @@
       </div>
       <div class="ticket-cell">
         <span class="k mono">STATUS</span>
-        <div class="v">Walk-ins Welcome<small>State inspections done same-visit</small></div>
+        <div class="v">Walk-ins Welcome<small>Emissions tests done same-visit</small></div>
       </div>
     </div>
   </div>
@@ -550,17 +674,56 @@
         </div>
         <div class="service-card">
           <span class="tag mono">BAY 03</span>
-          <h3>State Inspection</h3>
-          <p>Official Texas vehicle inspection station — get your sticker without a second trip across town.</p>
+          <h3>Emissions Test — Drive-Through</h3>
+          <p>Two OBD machines, two certified testers, under 10 minutes — the emissions test Harris County requires for registration, without the wait.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section after-test" id="after-test">
+    <div class="wrap">
+      <div class="section-label">
+        <span class="num mono">02</span>
+        <h2>After Your Emissions Test</h2>
+        <span class="rule"></span>
+      </div>
+      <p class="after-test-intro">Passing the test is the hard part — turning that into your registration sticker is easy once you know your options. Here's every way Harris County drivers get it done.</p>
+
+      <div class="after-test-grid">
+        <div class="at-card">
+          <span class="at-tag mono">FASTEST</span>
+          <h3>Renew Online (Texas by Texas)</h3>
+          <p>Once your passing result is on file, renew at Texas.gov using the Texas by Texas (TxT) service — available 90 days before your expiration and up to a year after. You get an emailed confirmation to keep in your vehicle while the physical sticker is mailed, usually within a couple of weeks.</p>
+        </div>
+
+        <div class="at-card">
+          <span class="at-tag mono">NO WAIT</span>
+          <h3>Grocery Store &amp; AAA Partner Locations</h3>
+          <p>If your registration isn't too far past due, many Kroger, H-E-B, and AAA locations can print your sticker on the spot. Bring your complete renewal notice, proof of insurance, and ID — your passing emissions result is checked electronically. Availability and rules vary by store and county, so it's worth calling ahead.</p>
+        </div>
+
+        <div class="at-card">
+          <span class="at-tag mono">IN PERSON</span>
+          <h3>County Tax Assessor-Collector Office</h3>
+          <p>Walk into any Harris County Tax Office location (or an approved substation) with your renewal notice, insurance, and ID. If your emissions result hasn't shown up electronically yet, bring the Vehicle Inspection Report (VIR) we hand you after your test — it's valid proof for up to 13 months.</p>
+        </div>
+
+        <div class="at-card">
+          <span class="at-tag mono">BY MAIL</span>
+          <h3>Mail-In Renewal</h3>
+          <p>Send your renewal notice, a copy of your VIR, a copy of your ID, and payment to the county tax office. Slower than the other options, but simple if you'd rather not go in person.</p>
+        </div>
+      </div>
+
+      <p class="after-test-note">Keep your VIR (Vehicle Inspection Report) in the glovebox after your test — it's your proof of a passing result no matter how you renew, and you can also pull a copy anytime at mytxcar.org.</p>
     </div>
   </section>
 
   <section class="section promos" id="promotions">
     <div class="wrap">
       <div class="section-label">
-        <span class="num mono">02</span>
+        <span class="num mono">03</span>
         <h2>Promotions &amp; Discounts</h2>
         <span class="rule"></span>
       </div>
@@ -571,7 +734,7 @@
             <span class="promo-price mono">$125</span>
           </div>
           <h3>Monthly Super Special</h3>
-          <p class="promo-desc">Full Service Bundle — full synthetic oil change, official Texas state inspection, and front wiper blade installation.</p>
+          <p class="promo-desc">Full Service Bundle — full synthetic oil change, official Texas emissions test, and front wiper blade installation.</p>
           <div class="promo-foot mono">Normally $153.50 — you save $28.50</div>
         </div>
 
@@ -591,7 +754,7 @@
             <span class="promo-price mono">$83.50</span>
           </div>
           <h3>Sunday Service Special</h3>
-          <p class="promo-desc">Full synthetic oil change ($65, regularly $85) plus your $18.50 state inspection — any Sunday.</p>
+          <p class="promo-desc">Full synthetic oil change ($65, regularly $85) plus your $18.50 emissions test — any Sunday.</p>
           <div class="promo-foot mono">Normally $103.50 — you save $20</div>
         </div>
 
@@ -611,7 +774,7 @@
             <span class="promo-price mono">10% OFF</span>
           </div>
           <h3>Veterans &amp; Military Discount</h3>
-          <p class="promo-desc">10% off any mechanical repair service, or $5 off your Texas state inspection — valid for Veterans, Reservists, and Retired Military. Please present a valid Military ID, VA Card, or DD-214 at checkout.</p>
+          <p class="promo-desc">10% off any mechanical repair service, or $5 off your Texas emissions test — valid for Veterans, Reservists, and Retired Military. Please present a valid Military ID, VA Card, or DD-214 at checkout.</p>
         </div>
       </div>
       <p class="promo-note mono">Prices and offers subject to change — call the shop to confirm current promotions.</p>
@@ -621,7 +784,7 @@
   <section class="section gallery">
     <div class="wrap">
       <div class="section-label">
-        <span class="num mono">03</span>
+        <span class="num mono">04</span>
         <h2>Around the Shop</h2>
         <span class="rule"></span>
       </div>
@@ -649,7 +812,7 @@
   <section class="section" id="team">
     <div class="wrap">
       <div class="section-label">
-        <span class="num mono">04</span>
+        <span class="num mono">05</span>
         <h2>Who You'll Talk To</h2>
         <span class="rule"></span>
       </div>
@@ -689,8 +852,8 @@
             <div class="punch"></div>
             <div class="badge-photo-placeholder">VLR</div>
             <h3>Victor Lopez Rios</h3>
-            <span class="role mono">OIL CHANGE &amp; INSPECTION MANAGER</span>
-            <p>Handles oil changes, battery service, and Texas state inspections.</p>
+            <span class="role mono">OIL CHANGE &amp; EMISSIONS TEST MANAGER</span>
+            <p>Handles oil changes, battery service, and Texas emissions testing.</p>
           </div>
         </div>
       </div>
@@ -702,7 +865,7 @@
       <div class="loc-grid">
         <div>
           <div class="section-label">
-            <span class="num mono">05</span>
+            <span class="num mono">06</span>
             <h2>Visit the Shop</h2>
           </div>
           <table class="hours-table">
