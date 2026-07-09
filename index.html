@@ -355,6 +355,11 @@
     color:var(--asphalt);
   }
   .bf-textarea{ resize:vertical; font-family:'Work Sans', sans-serif; }
+  .bf-hint{
+    font-size:11.5px;
+    color:var(--red);
+    margin-top:2px;
+  }
   .booking-actions{
     display:flex; gap:14px; flex-wrap:wrap;
     margin-top:24px;
@@ -846,6 +851,7 @@
           <label class="booking-field">
             <span class="bf-label mono" data-i18n="booking.time">Preferred Time</span>
             <input type="time" id="bk-time" class="bf-input">
+            <span id="bk-hours-hint" class="bf-hint"></span>
           </label>
           <label class="booking-field booking-field-wide">
             <span class="bf-label mono" data-i18n="booking.notes">Notes (optional)</span>
@@ -1251,6 +1257,50 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   }
 
+  var shopHours = {
+    0: { open: "09:00", close: "16:00" },  // Sunday
+    1: { open: "07:30", close: "18:00" },  // Monday
+    2: { open: "07:30", close: "18:00" },
+    3: { open: "07:30", close: "18:00" },
+    4: { open: "07:30", close: "18:00" },
+    5: { open: "07:30", close: "18:00" },
+    6: { open: "07:30", close: "17:30" }   // Saturday
+  };
+  var hoursHintText = {
+    en: function(o, c){ return "Shop hours that day: " + o + " – " + c; },
+    es: function(o, c){ return "Horario del taller ese día: " + o + " – " + c; }
+  };
+
+  function to12h(t){
+    var parts = t.split(":");
+    var h = parseInt(parts[0], 10);
+    var m = parts[1];
+    var ap = h >= 12 ? "PM" : "AM";
+    h = h % 12; if (h === 0) h = 12;
+    return h + ":" + m + " " + ap;
+  }
+
+  function updateHoursForDate(){
+    var dateEl = document.getElementById('bk-date');
+    var timeEl = document.getElementById('bk-time');
+    var hintEl = document.getElementById('bk-hours-hint');
+    if(!dateEl.value){ hintEl.textContent = ''; timeEl.removeAttribute('min'); timeEl.removeAttribute('max'); return; }
+    var d = new Date(dateEl.value + "T00:00:00");
+    var day = d.getDay();
+    var h = shopHours[day];
+    timeEl.setAttribute('min', h.open);
+    timeEl.setAttribute('max', h.close);
+    var lang = document.documentElement.lang === 'es' ? 'es' : 'en';
+    hintEl.textContent = hoursHintText[lang](to12h(h.open), to12h(h.close));
+  }
+
+  function isWithinShopHours(dateStr, timeStr){
+    if(!dateStr || !timeStr) return true;
+    var d = new Date(dateStr + "T00:00:00");
+    var h = shopHours[d.getDay()];
+    return timeStr >= h.open && timeStr <= h.close;
+  }
+
   function buildBookingText(){
     var name = document.getElementById('bk-name').value || '-';
     var contact = document.getElementById('bk-contact').value || '-';
@@ -1270,9 +1320,28 @@ document.addEventListener('DOMContentLoaded', function(){
     };
   }
 
+  var dateInput = document.getElementById('bk-date');
+  if(dateInput){ dateInput.addEventListener('change', updateHoursForDate); }
+
+  var outsideHoursMsg = {
+    en: "That time is outside our shop hours for that day. Please pick a time within the hours shown, or we'll do our best to work with you when we call to confirm.",
+    es: "Esa hora está fuera del horario del taller ese día. Por favor elige una hora dentro del horario mostrado, o haremos lo posible por ayudarte cuando te llamemos para confirmar."
+  };
+
+  function checkHoursBeforeSend(){
+    var dateVal = document.getElementById('bk-date').value;
+    var timeVal = document.getElementById('bk-time').value;
+    if(dateVal && timeVal && !isWithinShopHours(dateVal, timeVal)){
+      var lang = document.documentElement.lang === 'es' ? 'es' : 'en';
+      return confirm(outsideHoursMsg[lang]);
+    }
+    return true;
+  }
+
   var emailBtn = document.getElementById('bk-email-btn');
   if(emailBtn){
     emailBtn.addEventListener('click', function(){
+      if(!checkHoursBeforeSend()) return;
       var d = buildBookingText();
       window.location.href = 'mailto:mr.sticker4485@gmail.com?subject=' + encodeURIComponent(d.subject) + '&body=' + encodeURIComponent(d.body);
     });
@@ -1280,6 +1349,7 @@ document.addEventListener('DOMContentLoaded', function(){
   var textBtn = document.getElementById('bk-text-btn');
   if(textBtn){
     textBtn.addEventListener('click', function(){
+      if(!checkHoursBeforeSend()) return;
       var d = buildBookingText();
       window.location.href = 'sms:+18327999093?body=' + encodeURIComponent(d.subject + ' -- ' + d.body);
     });
