@@ -1351,7 +1351,9 @@ document.addEventListener('DOMContentLoaded', function(){
     textBtn.addEventListener('click', function(){
       if(!checkHoursBeforeSend()) return;
       var d = buildBookingText();
-      window.location.href = 'sms:+18327999093?body=' + encodeURIComponent(d.subject + ' -- ' + d.body);
+      var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      var sep = isIOS ? '&' : '?';
+      window.location.href = 'sms:+18327999093' + sep + 'body=' + encodeURIComponent(d.subject + ' -- ' + d.body);
     });
   }
 });
