@@ -132,6 +132,9 @@
   }
   .stat-sep{ color:#5A5750; }
   .visitor-badge{ height:16px; vertical-align:middle; }
+  .sc-holder{ display:inline-flex; align-items:center; }
+  .sc-holder a{ color:#F8C500 !important; text-decoration:none; }
+  .sc-holder img{ vertical-align:middle; }
   @media (max-width: 860px){
     .stat-strip-inner{ font-size:11px; padding:8px 16px; flex-wrap:wrap; }
   }
@@ -702,11 +705,19 @@
     <div class="wrap stat-strip-inner">
       <span class="stat-item">
         <span class="stat-dot"></span>
-        <span data-i18n="stat.online">Online Now:</span> <span id="stat-online-count">—</span>
-      </span>
-      <span class="stat-sep">·</span>
-      <span class="stat-item">
-        <span data-i18n="footer.visitors">TOTAL VISITORS</span>: <img class="visitor-badge" src="https://visitor-badge.laobi.icu/badge?page_id=mrsticker4485-code.mrsticker-website&left_color=%231B1B1A&right_color=%23F8C500&left_text=Visitors" alt="Visitor count" loading="lazy">
+        <span data-i18n="stat.total">Total Visits:</span>
+        <span id="sc-counter-holder" class="sc-holder">
+          <!-- Statcounter visible counter for Mr Sticker Auto Repair -->
+          <script type="text/javascript">
+          var sc_project=13335397;
+          var sc_invisible=0;
+          var sc_security="f235db56";
+          var sc_text=2;
+          var scJsHost = "https://";
+          document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+ "statcounter.com/counter/counter.js'></"+"script>");
+          </script>
+          <noscript><div class="statcounter"><a title="web counter" href="https://statcounter.com/" target="_blank"><img class="statcounter" src="https://c.statcounter.com/13335397/0/f235db56/2/" alt="web counter" referrerPolicy="unsafe-url"></a></div></noscript>
+        </span>
       </span>
     </div>
   </div>
@@ -1177,7 +1188,7 @@ const translations = {
   "map.linkMaps": {en:`Open in Google Maps →`, es:`Abrir en Google Maps →`},
   "map.linkCall": {en:`Call (713) 465-2552 →`, es:`Llamar (713) 465-2552 →`},
 
-  "stat.online": {en:`Online Now:`, es:`En Línea Ahora:`},
+  "stat.total": {en:`Total Visits:`, es:`Visitas Totales:`},
 
   "booking.h2": {en:`Request an Appointment`, es:`Solicitar una Cita`},
   "booking.intro": {en:`No phone call needed. Fill this out and send it to us by email or text — great if you'd rather not call, including for Deaf or hard-of-hearing customers.`, es:`No necesitas llamar por teléfono. Llena este formulario y envíalo por correo o mensaje de texto — ideal si prefieres no llamar, incluyendo para clientes sordos o con dificultades auditivas.`},
@@ -1274,14 +1285,6 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 });
 </script>
-
-<!-- Statcounter tracking code for Mr Sticker Auto Repair -->
-<script type="text/javascript">
-var sc_project=13335397;
-var sc_invisible=1;
-var sc_security="f235db56";
-</script>
-<script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
 
 <script>
   if ('serviceWorker' in navigator) {
