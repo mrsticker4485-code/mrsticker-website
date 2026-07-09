@@ -105,6 +105,36 @@
     white-space:nowrap;
   }
   .nav .fb-link:hover{ color:var(--yellow); border-color:var(--yellow); }
+
+  .stat-strip{
+    background:#242422;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .stat-strip-inner{
+    display:flex; align-items:center; gap:12px;
+    padding:8px 28px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:#C9C6BC;
+  }
+  .stat-item{ display:flex; align-items:center; gap:6px; }
+  .stat-dot{
+    width:7px; height:7px; border-radius:50%;
+    background:#3DBE5B;
+    display:inline-block;
+    box-shadow:0 0 0 0 rgba(61,190,91,0.6);
+    animation:stat-pulse 2s infinite;
+  }
+  @keyframes stat-pulse{
+    0%{ box-shadow:0 0 0 0 rgba(61,190,91,0.5); }
+    70%{ box-shadow:0 0 0 6px rgba(61,190,91,0); }
+    100%{ box-shadow:0 0 0 0 rgba(61,190,91,0); }
+  }
+  .stat-sep{ color:#5A5750; }
+  .visitor-badge{ height:16px; vertical-align:middle; }
+  @media (max-width: 860px){
+    .stat-strip-inner{ font-size:11px; padding:8px 16px; flex-wrap:wrap; }
+  }
   .lang-btn{
     background:transparent;
     border:1.5px solid #B9B6AC;
@@ -287,6 +317,51 @@
     flex:1;
     height:1px;
     background:repeating-linear-gradient(90deg, var(--ticket-line) 0 8px, transparent 8px 16px);
+  }
+
+  /* ---------- BOOKING ---------- */
+  .booking{ background:var(--white); border-top:1px solid rgba(0,0,0,0.08); border-bottom:1px solid rgba(0,0,0,0.08); }
+  .booking-intro{
+    max-width:640px;
+    font-size:15px;
+    color:var(--steel);
+    line-height:1.6;
+    margin:-20px 0 28px 0;
+  }
+  .booking-card{
+    background:var(--concrete);
+    border:1px dashed var(--ticket-line);
+    padding:28px 30px;
+  }
+  .booking-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px 22px;
+  }
+  .booking-field{ display:flex; flex-direction:column; gap:6px; }
+  .booking-field-wide{ grid-column:1 / -1; }
+  .bf-label{ font-size:11px; letter-spacing:0.08em; color:var(--steel); }
+  .bf-input{
+    font-family:'Work Sans', sans-serif;
+    font-size:14.5px;
+    padding:11px 12px;
+    border:1px solid rgba(0,0,0,0.18);
+    border-radius:2px;
+    background:var(--white);
+    color:var(--asphalt);
+  }
+  .bf-textarea{ resize:vertical; font-family:'Work Sans', sans-serif; }
+  .booking-actions{
+    display:flex; gap:14px; flex-wrap:wrap;
+    margin-top:24px;
+  }
+  .booking-note{
+    margin-top:16px;
+    font-size:12.5px;
+    color:var(--steel);
+  }
+  @media (max-width: 860px){
+    .booking-grid{ grid-template-columns:1fr; }
   }
 
   /* ---------- AFTER EMISSIONS TEST ---------- */
@@ -573,6 +648,22 @@
   footer .wrap{
     display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
   }
+  .visitor-row{
+    justify-content:flex-start !important;
+    gap:10px !important;
+    margin-top:14px;
+    padding-top:14px;
+    border-top:1px dashed rgba(255,255,255,0.12);
+  }
+  .visitor-label{
+    font-size:11px;
+    letter-spacing:0.1em;
+    color:#8B8880;
+  }
+  .visitor-badge{
+    display:block;
+    height:20px;
+  }
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 860px){
@@ -607,12 +698,26 @@
     </div>
   </nav>
 
+  <div class="stat-strip" id="stat-strip">
+    <div class="wrap stat-strip-inner">
+      <span class="stat-item">
+        <span class="stat-dot"></span>
+        <span data-i18n="stat.online">Online Now:</span> <span id="stat-online-count">—</span>
+      </span>
+      <span class="stat-sep">·</span>
+      <span class="stat-item">
+        <span data-i18n="footer.visitors">TOTAL VISITORS</span>: <img class="visitor-badge" src="https://visitor-badge.laobi.icu/badge?page_id=mrsticker4485-code.mrsticker-website&left_color=%231B1B1A&right_color=%23F8C500&left_text=Visitors" alt="Visitor count" loading="lazy">
+      </span>
+    </div>
+  </div>
+
   <header class="hero">
     <div class="wrap hero-inner">
       <span class="hero-eyebrow mono" data-i18n="hero.eyebrow">OFFICIAL TEXAS EMISSIONS TEST STATION</span>
       <h1 data-i18n-html="hero.h1">Drive in. Get your <em>sticker.</em><br>Drive out — in minutes.</h1>
       <p class="sub" data-i18n="hero.sub">Two OBD emissions test machines, two certified testers, working side by side — most vehicles are in and out in under 10 minutes. Plus full auto repair, oil changes, and battery service on Gessner Rd.</p>
       <div class="hero-actions">
+        <a class="btn btn-primary" href="#booking" data-i18n="hero.btnBook">Book Now — No Call Needed</a>
         <a class="btn btn-primary" href="tel:+17134652552">(713) 465-2552</a>
         <a class="btn btn-ghost" href="sms:+17134652552" data-i18n="cta.textUs">Text Us</a>
         <a class="btn btn-ghost" href="#after-test" data-i18n="hero.btnAfterTest">After Your Test</a>
@@ -694,10 +799,60 @@
     </div>
   </section>
 
-  <section class="section after-test" id="after-test">
+  <section class="section booking" id="booking">
     <div class="wrap">
       <div class="section-label">
         <span class="num mono">02</span>
+        <h2 data-i18n="booking.h2">Request an Appointment</h2>
+        <span class="rule"></span>
+      </div>
+      <p class="booking-intro" data-i18n="booking.intro">No phone call needed. Fill this out and send it to us by email or text — great if you'd rather not call, including for Deaf or hard-of-hearing customers.</p>
+
+      <div class="booking-card">
+        <div class="booking-grid">
+          <label class="booking-field">
+            <span class="bf-label mono" data-i18n="booking.name">Your Name</span>
+            <input type="text" id="bk-name" class="bf-input" data-i18n-placeholder="booking.namePh" placeholder="Jane Doe">
+          </label>
+          <label class="booking-field">
+            <span class="bf-label mono" data-i18n="booking.contact">Phone or Email</span>
+            <input type="text" id="bk-contact" class="bf-input" data-i18n-placeholder="booking.contactPh" placeholder="(713) 555-0100">
+          </label>
+          <label class="booking-field">
+            <span class="bf-label mono" data-i18n="booking.service">Service Needed</span>
+            <select id="bk-service" class="bf-input">
+              <option data-i18n="booking.opt1" value="Emissions Test">Emissions Test</option>
+              <option data-i18n="booking.opt2" value="Oil Change &amp; Battery">Oil Change &amp; Battery</option>
+              <option data-i18n="booking.opt3" value="Auto Repair &amp; AC Service">Auto Repair &amp; AC Service</option>
+              <option data-i18n="booking.opt4" value="Other">Other</option>
+            </select>
+          </label>
+          <label class="booking-field">
+            <span class="bf-label mono" data-i18n="booking.date">Preferred Date</span>
+            <input type="date" id="bk-date" class="bf-input">
+          </label>
+          <label class="booking-field">
+            <span class="bf-label mono" data-i18n="booking.time">Preferred Time</span>
+            <input type="time" id="bk-time" class="bf-input">
+          </label>
+          <label class="booking-field booking-field-wide">
+            <span class="bf-label mono" data-i18n="booking.notes">Notes (optional)</span>
+            <textarea id="bk-notes" class="bf-input bf-textarea" rows="3" data-i18n-placeholder="booking.notesPh" placeholder="Vehicle make/model, anything we should know..."></textarea>
+          </label>
+        </div>
+        <div class="booking-actions">
+          <button type="button" class="btn btn-primary" id="bk-email-btn" data-i18n="booking.sendEmail">Send Request by Email</button>
+          <button type="button" class="btn btn-dark" id="bk-text-btn" data-i18n="booking.sendText">Send by Text Message</button>
+        </div>
+        <p class="booking-note" data-i18n="booking.note">This opens your own email or messaging app with the details filled in — just hit send. We'll confirm your appointment back by phone, text, or email.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section after-test" id="after-test">
+    <div class="wrap">
+      <div class="section-label">
+        <span class="num mono">03</span>
         <h2 data-i18n="after.h2">After Your Emissions Test</h2>
         <span class="rule"></span>
       </div>
@@ -736,7 +891,7 @@
   <section class="section promos" id="promotions">
     <div class="wrap">
       <div class="section-label">
-        <span class="num mono">03</span>
+        <span class="num mono">04</span>
         <h2 data-i18n="promos.h2">Promotions &amp; Discounts</h2>
         <span class="rule"></span>
       </div>
@@ -797,7 +952,7 @@
   <section class="section gallery">
     <div class="wrap">
       <div class="section-label">
-        <span class="num mono">04</span>
+        <span class="num mono">05</span>
         <h2 data-i18n="gallery.h2">Around the Shop</h2>
         <span class="rule"></span>
       </div>
@@ -825,7 +980,7 @@
   <section class="section" id="team">
     <div class="wrap">
       <div class="section-label">
-        <span class="num mono">05</span>
+        <span class="num mono">06</span>
         <h2 data-i18n="team.h2">Who You'll Talk To</h2>
         <span class="rule"></span>
       </div>
@@ -878,7 +1033,7 @@
       <div class="loc-grid">
         <div>
           <div class="section-label">
-            <span class="num mono">06</span>
+            <span class="num mono">07</span>
             <h2 data-i18n="visit.h2">Visit the Shop</h2>
           </div>
           <table class="hours-table">
@@ -925,6 +1080,7 @@ const translations = {
   "hero.eyebrow": {en:`OFFICIAL TEXAS EMISSIONS TEST STATION`, es:`ESTACIÓN OFICIAL DE PRUEBA DE EMISIONES DE TEXAS`},
   "hero.h1": {en:`Drive in. Get your <em>sticker.</em><br>Drive out — in minutes.`, es:`Entra con tu auto. Obtén tu <em>engomado.</em><br>Sal — en minutos.`},
   "hero.sub": {en:`Two OBD emissions test machines, two certified testers, working side by side — most vehicles are in and out in under 10 minutes. Plus full auto repair, oil changes, and battery service on Gessner Rd.`, es:`Dos máquinas de prueba de emisiones OBD, dos técnicos certificados, trabajando lado a lado — la mayoría de los vehículos entran y salen en menos de 10 minutos. Además, reparación completa, cambios de aceite y servicio de batería en Gessner Rd.`},
+  "hero.btnBook": {en:`Book Now — No Call Needed`, es:`Reserva Ahora — Sin Llamar`},
   "hero.btnAfterTest": {en:`After Your Test`, es:`Después de tu Prueba`},
   "hero.btnPromotions": {en:`See Promotions`, es:`Ver Promociones`},
   "hero.btnReviews": {en:`Read Reviews`, es:`Leer Reseñas`},
@@ -1021,7 +1177,29 @@ const translations = {
   "map.linkMaps": {en:`Open in Google Maps →`, es:`Abrir en Google Maps →`},
   "map.linkCall": {en:`Call (713) 465-2552 →`, es:`Llamar (713) 465-2552 →`},
 
-  "footer.reviews": {en:`Customer Reviews`, es:`Reseñas de Clientes`}
+  "stat.online": {en:`Online Now:`, es:`En Línea Ahora:`},
+
+  "booking.h2": {en:`Request an Appointment`, es:`Solicitar una Cita`},
+  "booking.intro": {en:`No phone call needed. Fill this out and send it to us by email or text — great if you'd rather not call, including for Deaf or hard-of-hearing customers.`, es:`No necesitas llamar por teléfono. Llena este formulario y envíalo por correo o mensaje de texto — ideal si prefieres no llamar, incluyendo para clientes sordos o con dificultades auditivas.`},
+  "booking.name": {en:`Your Name`, es:`Tu Nombre`},
+  "booking.namePh": {en:`Jane Doe`, es:`Juan Pérez`},
+  "booking.contact": {en:`Phone or Email`, es:`Teléfono o Correo`},
+  "booking.contactPh": {en:`(713) 555-0100`, es:`(713) 555-0100`},
+  "booking.service": {en:`Service Needed`, es:`Servicio Necesario`},
+  "booking.opt1": {en:`Emissions Test`, es:`Prueba de Emisiones`},
+  "booking.opt2": {en:`Oil Change &amp; Battery`, es:`Cambio de Aceite y Batería`},
+  "booking.opt3": {en:`Auto Repair &amp; AC Service`, es:`Reparación de Autos y A/C`},
+  "booking.opt4": {en:`Other`, es:`Otro`},
+  "booking.date": {en:`Preferred Date`, es:`Fecha Preferida`},
+  "booking.time": {en:`Preferred Time`, es:`Hora Preferida`},
+  "booking.notes": {en:`Notes (optional)`, es:`Notas (opcional)`},
+  "booking.notesPh": {en:`Vehicle make/model, anything we should know...`, es:`Marca/modelo del vehículo, cualquier cosa que debamos saber...`},
+  "booking.sendEmail": {en:`Send Request by Email`, es:`Enviar Solicitud por Correo`},
+  "booking.sendText": {en:`Send by Text Message`, es:`Enviar por Mensaje de Texto`},
+  "booking.note": {en:`This opens your own email or messaging app with the details filled in — just hit send. We'll confirm your appointment back by phone, text, or email.`, es:`Esto abre tu propia aplicación de correo o mensajes con los detalles ya llenados — solo tienes que enviarlo. Te confirmaremos tu cita por teléfono, mensaje de texto o correo.`},
+
+  "footer.reviews": {en:`Customer Reviews`, es:`Reseñas de Clientes`},
+  "footer.visitors": {en:`TOTAL VISITORS`, es:`VISITANTES TOTALES`}
 };
 
 function applyLang(lang){
@@ -1038,6 +1216,12 @@ function applyLang(lang){
       el.innerHTML = translations[key][lang];
     }
   });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){
+    var key = el.getAttribute('data-i18n-placeholder');
+    if(translations[key] && translations[key][lang] !== undefined){
+      el.setAttribute('placeholder', translations[key][lang]);
+    }
+  });
   var btn = document.getElementById('lang-toggle');
   if(btn){ btn.textContent = lang === 'en' ? 'ES' : 'EN'; }
   try{ localStorage.setItem('mrstickerLang', lang); }catch(e){}
@@ -1052,6 +1236,40 @@ document.addEventListener('DOMContentLoaded', function(){
     btn.addEventListener('click', function(){
       var current = document.documentElement.lang === 'es' ? 'es' : 'en';
       applyLang(current === 'en' ? 'es' : 'en');
+    });
+  }
+
+  function buildBookingText(){
+    var name = document.getElementById('bk-name').value || '-';
+    var contact = document.getElementById('bk-contact').value || '-';
+    var serviceEl = document.getElementById('bk-service');
+    var service = serviceEl.options[serviceEl.selectedIndex] ? serviceEl.options[serviceEl.selectedIndex].text : '-';
+    var date = document.getElementById('bk-date').value || '-';
+    var time = document.getElementById('bk-time').value || '-';
+    var notes = document.getElementById('bk-notes').value || '-';
+    return {
+      subject: 'Appointment Request - ' + name,
+      body: 'Name: ' + name + '\n' +
+            'Phone/Email: ' + contact + '\n' +
+            'Service: ' + service + '\n' +
+            'Preferred Date: ' + date + '\n' +
+            'Preferred Time: ' + time + '\n' +
+            'Notes: ' + notes
+    };
+  }
+
+  var emailBtn = document.getElementById('bk-email-btn');
+  if(emailBtn){
+    emailBtn.addEventListener('click', function(){
+      var d = buildBookingText();
+      window.location.href = 'mailto:mr.sticker4485@gmail.com?subject=' + encodeURIComponent(d.subject) + '&body=' + encodeURIComponent(d.body);
+    });
+  }
+  var textBtn = document.getElementById('bk-text-btn');
+  if(textBtn){
+    textBtn.addEventListener('click', function(){
+      var d = buildBookingText();
+      window.location.href = 'sms:+17134652552?body=' + encodeURIComponent(d.subject + ' -- ' + d.body);
     });
   }
 });
