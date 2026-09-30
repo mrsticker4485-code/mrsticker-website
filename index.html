@@ -1124,6 +1124,12 @@
     .nav .fb-link, .lang-btn{ padding:7px 8px; font-size:11px; letter-spacing:0.02em; }
     .logo-trophy{ width:56px; height:64px; }
   }
+
+  /* ---------- SERVICE PAGE LINKS ---------- */
+  .svc-links{ display:flex; flex-wrap:wrap; gap:8px 16px; margin-top:18px; }
+  .svc-links a{ font-family:'IBM Plex Mono', monospace; font-size:13px; font-weight:600; color:var(--red); text-decoration:underline; text-underline-offset:3px; }
+  .svc-links a:hover{ color:var(--asphalt); }
+  .footer-svc a{ margin-right:14px; }
 </style>
 <link rel="preload" as="image" href="ms-shop-front-800.webp" media="(max-width: 860px)" fetchpriority="high">
 <link rel="preload" as="image" href="ms-shop-front.webp" media="(min-width: 861px)" fetchpriority="high">
@@ -1260,16 +1266,19 @@
           <span class="tag mono" data-i18n="services.tag1">BAY 01</span>
           <h3 data-i18n="services.h3_1">Auto Repair &amp; AC Service</h3>
           <p data-i18n="services.p1">General repair and A/C diagnostics — from a rattle you can't place to a compressor that's given up in July.</p>
+          <div class="svc-links"><a href="auto-repair-houston.html" data-i18n="svc.more1">Auto repair →</a><a href="ac-repair-houston.html" data-i18n="svc.more1b">A/C repair →</a><a href="brake-repair-houston.html" data-i18n="svc.more1c">Brakes →</a></div>
         </div>
         <div class="service-card">
           <span class="tag mono" data-i18n="services.tag2">BAY 02</span>
           <h3 data-i18n="services.h3_2">Oil Change &amp; Battery</h3>
           <p data-i18n="services.p2">Quick oil changes and battery testing/replacement, handled while you wait in the front lobby.</p>
+          <div class="svc-links"><a href="oil-change-houston.html" data-i18n="svc.more2">Oil change prices →</a></div>
         </div>
         <div class="service-card">
           <span class="tag mono" data-i18n="services.tag3">BAY 03</span>
           <h3 data-i18n="services.h3_3">Emissions Test — Drive-Through</h3>
           <p data-i18n="services.p3">Two OBD machines running at once, under 10 minutes — you stay with your car the whole time. The emissions test Harris County requires for registration, without the wait.</p>
+          <div class="svc-links"><a href="emissions-test-houston.html" data-i18n="svc.more3">Emissions test details →</a></div>
         </div>
       </div>
     </div>
@@ -1577,6 +1586,13 @@
       <span>
         <a href="reviews.html" style="margin-right:16px; text-decoration:underline;" data-i18n="footer.reviews">Customer Reviews</a>
         <a href="mrsticker-card.html" style="margin-right:16px; text-decoration:underline;" data-i18n="footer.card">Business Card</a>
+      </span>
+      <span class="footer-svc">
+        <a href="emissions-test-houston.html" style="text-decoration:underline;" data-i18n="fsvc.1">Emissions Test</a>
+        <a href="oil-change-houston.html" style="text-decoration:underline;" data-i18n="fsvc.2">Oil Change</a>
+        <a href="brake-repair-houston.html" style="text-decoration:underline;" data-i18n="fsvc.3">Brake Repair</a>
+        <a href="ac-repair-houston.html" style="text-decoration:underline;" data-i18n="fsvc.4">A/C Repair</a>
+        <a href="auto-repair-houston.html" style="text-decoration:underline;" data-i18n="fsvc.5">Auto Repair</a>
         <a href="https://www.facebook.com/mastersticker4485" target="_blank" rel="noopener" style="margin-right:16px; text-decoration:underline;">Facebook</a>
         <span class="mono">(713) 465-2552</span>
       </span>
@@ -1744,7 +1760,17 @@ const translations = {
   "card.f5": {en:`Save to contacts`, es:`Guardar en contactos`},
   "card.f6": {en:`Google reviews`, es:`Reseñas de Google`},
   "card.open": {en:`Open the card →`, es:`Abrir la tarjeta →`},
-  "card.scan": {en:`Scan with your phone camera`, es:`Escanee con la cámara de su teléfono`}
+  "card.scan": {en:`Scan with your phone camera`, es:`Escanee con la cámara de su teléfono`},
+  "svc.more1": {en:`Auto repair →`, es:`Reparación general →`},
+  "svc.more1b": {en:`A/C repair →`, es:`Reparación de A/C →`},
+  "svc.more1c": {en:`Brakes →`, es:`Frenos →`},
+  "svc.more2": {en:`Oil change prices →`, es:`Precios de cambio de aceite →`},
+  "svc.more3": {en:`Emissions test details →`, es:`Detalles de la prueba de emisiones →`},
+  "fsvc.1": {en:`Emissions Test`, es:`Prueba de Emisiones`},
+  "fsvc.2": {en:`Oil Change`, es:`Cambio de Aceite`},
+  "fsvc.3": {en:`Brake Repair`, es:`Reparación de Frenos`},
+  "fsvc.4": {en:`A/C Repair`, es:`Reparación de A/C`},
+  "fsvc.5": {en:`Auto Repair`, es:`Reparación General`}
 };
 
 function applyLang(lang){
