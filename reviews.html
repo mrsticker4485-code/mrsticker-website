@@ -163,6 +163,16 @@
     .review-grid{ grid-template-columns:1fr; }
     .nav .cta-ghost{ display:none; }
   }
+
+  /* ---------- MOBILE NAV FIT ---------- */
+  @media (max-width: 600px){
+    .nav .callbar{ gap:8px; min-width:0; }
+    .nav .cta, .nav .fb-link, .lang-btn{ padding:8px 10px; font-size:12px; }
+    .nav .callbar a[href*="facebook"], .nav .callbar .cta-ghost{ display:none; }
+  }
+  @media (max-width: 380px){
+    .nav .callbar .nav-glow{ display:none; }
+  }
 </style>
 </head>
 <body>
@@ -186,9 +196,9 @@
       <h1 data-i18n="rev.h1">What Customers Say</h1>
       <p data-i18n="rev.subhead">A look at what regulars tell us — in the lobby, over the phone, and online.</p>
       <a class="google-badge" href="https://www.google.com/maps/search/?api=1&query=Mr+Sticker+Auto+Repair&query_place_id=ChIJW0YEQ8PEQIYRnJ5Fy0iEkkI" target="_blank" rel="noopener">
-        <span class="google-badge-stars">★★★★☆</span>
-        <span class="google-badge-score mono">4.4</span>
-        <span class="google-badge-text mono" data-i18n="rev.googleBadge">323 Google Reviews — See them all →</span>
+        <span class="google-badge-stars">★★★★½</span>
+        <span class="google-badge-score mono">4.5</span>
+        <span class="google-badge-text mono" data-i18n="rev.googleBadge">340+ Google Reviews — See them all →</span>
       </a>
     </div>
   </header>
@@ -260,7 +270,7 @@ const translations = {
   "rev.eyebrow": {en:`CUSTOMER FEEDBACK`, es:`OPINIONES DE CLIENTES`},
   "rev.h1": {en:`What Customers Say`, es:`Lo Que Dicen Nuestros Clientes`},
   "rev.subhead": {en:`A look at what regulars tell us — in the lobby, over the phone, and online.`, es:`Un vistazo a lo que nos comparten nuestros clientes de siempre — en la sala de espera, por teléfono, y en línea.`},
-  "rev.googleBadge": {en:`323 Google Reviews — See them all →`, es:`323 Reseñas en Google — Ver todas →`},
+  "rev.googleBadge": {en:`340+ Google Reviews — See them all →`, es:`Más de 340 Reseñas en Google — Ver todas →`},
   "rev.sectionH2": {en:`Recent Feedback`, es:`Opiniones Recientes`},
 
   "rev.stub1": {en:`WORK ORDER · EMISSIONS TEST`, es:`ORDEN DE TRABAJO · PRUEBA DE EMISIONES`},
